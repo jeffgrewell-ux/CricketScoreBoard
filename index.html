@@ -160,7 +160,6 @@ word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
 
 
 <body>
-<button onclick="toggleFullScreen()">Toggle Full Screen</button>
 
 <table border="5" class="full-height-table" align="center">
 
@@ -801,33 +800,4 @@ adjustFontSize(editor4);
 
 
 
-</tbody></table>
-
-<script>
-function toggleFullScreen() {
-    // Get the element you want to make full screen, e.g., the whole page
-    var elem = document.documentElement; 
-
-    if (!document.fullscreenElement) {
-        // Enter fullscreen mode
-        if (elem.requestFullscreen) {
-            elem.requestFullscreen();
-        } else if (elem.webkitRequestFullscreen) { /* Safari */
-            elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) { /* IE11 */
-            elem.msRequestFullscreen();
-        }
-    } else {
-        // Exit fullscreen mode
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) { /* Safari */
-            document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) { /* IE11 */
-            document.msExitFullscreen();
-        }
-    }
-}
-
-</script>
-</body></html>
+</tbody></table></body></html>
