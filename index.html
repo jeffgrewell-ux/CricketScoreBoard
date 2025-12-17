@@ -153,7 +153,8 @@ word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
 
 .no-outline{
    /* This ensures the whole block is selected on a single tap/click */
-  user-select: all;
+   -webkit-user-select: all; /* For Safari/iOS */
+  user-select: all;         /* Standard syntax */
 }
 
 </style></head>
