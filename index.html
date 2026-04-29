@@ -2,169 +2,116 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
 <style>
-
-
-img[name=JRGImage]:hover
-
-{
-
-  cursor:pointer;
-
+html{
+	min-height: 95%;
 }
 
+body {
+	overflow: hidden;
+	min-height: 95%;
+}
 
+img[name=JRGImage]:hover {
+	cursor:pointer;
+}
 
 pre {
-
-
-
-font-weight: bold;
-
+	font-weight: bold;
 }
-
-
 
 pre[name=Cricket]
 {
-display: inline-block;
-font-weight: bold;
-font-size: 3cqi;
+	display: inline-block;
+	font-weight: bold;
+	font-size: 1.5cqh;
 }
-
-
 
 pre[name=Bull]
 {
-font-weight: bold;
-font-size: 5cqi;
+	font-weight: bold;
+	font-size: 5cqh;
 }
 
 pre[name=Numbers]
 {
-font-weight: bold;
-font-size: 5cqi;
+	font-weight: bold;
+	font-size: 5cqh;
 }
 
 td {
-
-border: 2px solid black; /* Sets border width, style, and color */
-
-vertical-align: middle;
-
-text-align: center; /* Optional: also centers horizontally */
-
-aspect-ratio: 1 / 1;
-margin: 0;
-padding: 0; 
+    width: 11dvh; 
+	height: 11dvh;
+	aspect-ratio: 1 / 1;
+	border: 2px solid black; /* Sets border width, style, and color */
+	vertical-align: middle;
+	text-align: center; /* Optional: also centers horizontally */
+	margin: 0;
+	padding: 0; 
 }
 
 td pre {
+    width: 11dvh; 
+	height: 11dvh;
+	aspect-ratio: 1 / 1;
     margin: 0;
     padding: 0;
 }
 
 #dynamicTable {
-table-layout: fixed;
-Max-width: 100dvw
   border-collapse: collapse;
-
   overflow-y: hidden;
   border-spacing: 0px;
   margin-left: auto;
   margin-right: auto;
 }
 
-
 img {
     width: 10dvh; 
 	height: 10dvh; 
-object-fit: fill;
-
-cursor: pointer
-
+	object-fit: fill;
+	cursor: pointer
 }
-
-
 
 #editor1{
-margin: 0; 
-  display: inline-block;
-  max-width: 100%; /* Ensures it doesn't exceed container */
-padding: 0; 
-    width: 12dvh; /* Fixed width container */
-	height: 12dvh; /* Fixed width container */
+	margin: 0; 
+	display: inline-block;
+	max-width: 100%; /* Ensures it doesn't exceed container */
+	padding: 0; 
 	vertical-align: middle;
 	text-align: center; /* Optional: also centers horizontally */
-
-
-
-
-
-word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
-aspect-ratio: 1 / 1;
+	word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
 }
-
-
 
 #editor2{
-margin: 0;
-  display: inline-block;
-  max-width: 100%; /* Ensures it doesn't exceed container */
-padding: 0; 
-    width: 12dvh; /* Fixed width container */
-	height: 12dvh; /* Fixed width container */
+	margin: 0;
+	display: inline-block;
+	max-width: 100%; /* Ensures it doesn't exceed container */
+	padding: 0; 
 	vertical-align: middle;
 	text-align: center; /* Optional: also centers horizontally */
-
-
-
-
-
-
-word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
-aspect-ratio: 1 / 1;
+	word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
 }
 
-
-
 #editor3{
-margin: 0; 
-  display: inline-block;
-  max-width: 100%; /* Ensures it doesn't exceed container */
-padding: 0; 
-    width: 12dvh; /* Fixed width container */
-	height: 12dvh; /* Fixed width container */
+	margin: 0; 
+	display: inline-block;
+	max-width: 100%; /* Ensures it doesn't exceed container */
+	padding: 0; 
 	vertical-align: middle;
 	text-align: center; /* Optional: also centers horizontally */
-
-
-
-
-
-
-word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
-aspect-ratio: 1 / 1;
+	word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
 }
 
 
 
 #editor4{
-margin: 0; 
-  display: inline-block;
-  max-width: 100%; /* Ensures it doesn't exceed container */
-padding: 0; 
-    width: 12dvh; /* Fixed width container */
-	height: 12dvh; /* Fixed width container */
+	margin: 0; 
+	display: inline-block;
+	max-width: 100%; /* Ensures it doesn't exceed container */
+	padding: 0; 
 	vertical-align: middle;
 	text-align: center; /* Optional: also centers horizontally */
-
-
-
-
-
-
-word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
-aspect-ratio: 1 / 1;
+	word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
 }
 
 
@@ -175,42 +122,42 @@ aspect-ratio: 1 / 1;
 </style></head>
 
 
+
 <script>
-function adjustTableHeight() {
-setTimeout(() => {
-	}, 2000);
-	    const table = document.getElementById('dynamicTable');
-    // Subtract any offsets for headers or margins (e.g., -50px)
-    table.style.height = (window.innerHeight - 50) + "px";
-}
+//function adjustCellSize() {
+document.addEventListener("DOMContentLoaded", function() {
+let td = document.querySelector('td'); // Correct
+const table = document.getElementById('dynamicTable');
+let currentWidth = parseFloat(td.style.width) || 12; // Default to 100 if empty
+let currentHeight = parseFloat(td.style.height) || 12; // Default to 100 if empty
 
-// Run on initial load
-window.onload = adjustTableHeight;
-// Run on window resize
-window.onresize = adjustTableHeight;
+	if (table.offsetWidth > window.innerWidth || table.offsetHeight > window.innerHeight) {
+		do {
+		td.style.width = (currentWidth - 1) + "dvh";
+		td.style.height = (currentHeight - 1) + "dvh";
+		} while (table.offsetWidth > window.innerWidth || table.offsetHeight > window.innerHeight);
+	};
+	});
+</script>
 
 
+<script>
 window.addEventListener("resize", () => {
- console.log(`New size: ${window.innerWidth}x${window.innerHeight}`);
-window.location.reload();
+console.log(`New size: ${window.innerWidth}x${window.innerHeight}`);
+adjustFontSize(editor1);
+adjustFontSize(editor2);
+adjustFontSize(editor3);
+adjustFontSize(editor4);
 });
 
 </script>
 
 
-
-
-
-
-
-<body  onload="adjustFontSize(editor1); adjustFontSize(editor2);adjustFontSize(editor3);adjustFontSize(editor4);">
-
+<body  onload="adjustFontSize(editor1);adjustFontSize(editor2);adjustFontSize(editor3);adjustFontSize(editor4);">
 
 <table id="dynamicTable" align="center">
 
 <tbody><tr>
-
-
 
 <td><pre class="no-outline" id="editor1" contenteditable="true">P1</pre></td>
 <td><pre class="no-outline" id="editor2" contenteditable="true">P2</pre></td>
@@ -218,19 +165,9 @@ window.location.reload();
 <td><pre class="no-outline" id="editor3" contenteditable="true">P3</pre></td>
 <td><pre class="no-outline" id="editor4" contenteditable="true">P4</pre></td>
 
-
-
 </tr>
 
-
-
-
-
-
-
 <tr>
-
-
 
 <td>
 
@@ -659,14 +596,23 @@ window.location.reload();
 // Function to check and adjust font size
 
 function adjustFontSize(element) {
+    var containerWidth = element.offsetWidth;
 
-    const containerWidth = element.offsetWidth;
+    var contentWidth = element.scrollWidth; // Actual width of content
 
-    const contentWidth = element.scrollWidth; // Actual width of content
+    var currentFontSize = parseFloat(window.getComputedStyle(element).fontSize);
 
-    let currentFontSize = parseFloat(window.getComputedStyle(element).fontSize);
+    const maxFontSize = 500; // Set a maximum font size
+	element.style.fontSize = maxFontSize + 'px';
+	
+do {
+    var containerWidth = element.offsetWidth;
 
-    const maxFontSize = 120; // Set a maximum font size
+    var contentWidth = element.scrollWidth; // Actual width of content
+
+    var currentFontSize = parseFloat(window.getComputedStyle(element).fontSize);
+
+    const maxFontSize = 500; // Set a maximum font size
 
 
 
@@ -678,7 +624,7 @@ function adjustFontSize(element) {
 
         // This is a basic example; more complex calculations may be needed for precise fitting.
 
-        let newSize = (containerWidth / contentWidth) * currentFontSize * 0.95; 
+        var newSize = (containerWidth / contentWidth) * currentFontSize * 0.99; 
 
         
 
@@ -694,16 +640,16 @@ function adjustFontSize(element) {
 
         element.style.fontSize = newSize + 'px';
 
-    } else {
-
-        // Optional: Reset to max size if content is small enough to grow
-
-        // Note: this can cause a 'flicker' as the content expands, you may want to manage this carefully
-
-        element.style.fontSize = maxFontSize + 'px'; 
-
     }
 
+var computedSize = window.getComputedStyle(element).fontSize;
+console.log(containerWidth);
+console.log(contentWidth);
+console.log(element);
+console.log(newSize);
+console.log(`Actual font-size: ${computedSize}`); 
+// Output: "16px" (always returns pixels)
+} while (contentWidth > containerWidth);
 }
 
 
