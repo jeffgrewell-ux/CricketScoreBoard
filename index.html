@@ -4,7 +4,6 @@
 <style>
 
 
-
 img[name=JRGImage]:hover
 
 {
@@ -17,7 +16,7 @@ img[name=JRGImage]:hover
 
 pre {
 
-Font-size:80px;
+
 
 font-weight: bold;
 
@@ -26,58 +25,60 @@ font-weight: bold;
 
 
 pre[name=Cricket]
-
 {
-
-Font-size:30px;
-
+display: inline-block;
 font-weight: bold;
-
+font-size: 3cqi;
 }
 
 
 
 pre[name=Bull]
-
 {
-
-Font-size:80px;
-
 font-weight: bold;
-
+font-size: 5cqi;
 }
 
-
+pre[name=Numbers]
+{
+font-weight: bold;
+font-size: 5cqi;
+}
 
 td {
+
 border: 2px solid black; /* Sets border width, style, and color */
 
 vertical-align: middle;
 
 text-align: center; /* Optional: also centers horizontally */
 
-Width: 12vh;
-
+aspect-ratio: 1 / 1;
+margin: 0;
+padding: 0; 
 }
 
-
-
-.full-height-table {
-
-    height: 90vh; /* Sets height directly to 100% of the browser's visible height */
-	max-width: 95vw; /* Limits the table's maximum width */
-    border-collapse: collapse; /* Optional: for cleaner borders */
-
-
+td pre {
+    margin: 0;
+    padding: 0;
 }
 
+#dynamicTable {
+table-layout: fixed;
+Max-width: 100dvw
+  border-collapse: collapse;
+
+  overflow-y: hidden;
+  border-spacing: 0px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 
 img {
-
-height: 12vh;
-
-Width: 12vh;
+    width: 10dvh; 
+	height: 10dvh; 
+object-fit: fill;
 
 cursor: pointer
 
@@ -86,65 +87,84 @@ cursor: pointer
 
 
 #editor1{
+margin: 0; 
+  display: inline-block;
+  max-width: 100%; /* Ensures it doesn't exceed container */
+padding: 0; 
+    width: 12dvh; /* Fixed width container */
+	height: 12dvh; /* Fixed width container */
+	vertical-align: middle;
+	text-align: center; /* Optional: also centers horizontally */
 
-    width: 12vh; /* Fixed width container */
 
-    max-width: 12vh;
 
-white-space: pre; /* Preserves whitespace and line breaks */
 
-font-size: 60px; /* Initial/Max font size */
 
 word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
-
+aspect-ratio: 1 / 1;
 }
 
 
 
 #editor2{
+margin: 0;
+  display: inline-block;
+  max-width: 100%; /* Ensures it doesn't exceed container */
+padding: 0; 
+    width: 12dvh; /* Fixed width container */
+	height: 12dvh; /* Fixed width container */
+	vertical-align: middle;
+	text-align: center; /* Optional: also centers horizontally */
 
-    width: 12vh; /* Fixed width container */
 
-    max-width: 12vh;
 
-white-space: pre; /* Preserves whitespace and line breaks */
 
-font-size: 60px; /* Initial/Max font size */
+
 
 word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
-
+aspect-ratio: 1 / 1;
 }
 
 
 
 #editor3{
+margin: 0; 
+  display: inline-block;
+  max-width: 100%; /* Ensures it doesn't exceed container */
+padding: 0; 
+    width: 12dvh; /* Fixed width container */
+	height: 12dvh; /* Fixed width container */
+	vertical-align: middle;
+	text-align: center; /* Optional: also centers horizontally */
 
-    width: 12vh; /* Fixed width container */
 
-    max-width: 12vh;
 
-white-space: pre; /* Preserves whitespace and line breaks */
 
-font-size: 60px; /* Initial/Max font size */
+
 
 word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
-
+aspect-ratio: 1 / 1;
 }
 
 
 
 #editor4{
+margin: 0; 
+  display: inline-block;
+  max-width: 100%; /* Ensures it doesn't exceed container */
+padding: 0; 
+    width: 12dvh; /* Fixed width container */
+	height: 12dvh; /* Fixed width container */
+	vertical-align: middle;
+	text-align: center; /* Optional: also centers horizontally */
 
-    width: 12vh; /* Fixed width container */
 
-    max-width: 12vh;
 
-white-space: pre; /* Preserves whitespace and line breaks */
 
-font-size: 60px; /* Initial/Max font size */
+
 
 word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
-
+aspect-ratio: 1 / 1;
 }
 
 
@@ -155,6 +175,27 @@ word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
 </style></head>
 
 
+<script>
+function adjustTableHeight() {
+setTimeout(() => {
+	}, 2000);
+	    const table = document.getElementById('dynamicTable');
+    // Subtract any offsets for headers or margins (e.g., -50px)
+    table.style.height = (window.innerHeight - 50) + "px";
+}
+
+// Run on initial load
+window.onload = adjustTableHeight;
+// Run on window resize
+window.onresize = adjustTableHeight;
+
+
+window.addEventListener("resize", () => {
+ console.log(`New size: ${window.innerWidth}x${window.innerHeight}`);
+window.location.reload();
+});
+
+</script>
 
 
 
@@ -162,55 +203,20 @@ word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
 
 
 
+<body  onload="adjustFontSize(editor1); adjustFontSize(editor2);adjustFontSize(editor3);adjustFontSize(editor4);">
 
 
-<body>
-
-<table border="5" class="full-height-table" align="center">
-
-
+<table id="dynamicTable" align="center">
 
 <tbody><tr>
 
 
 
-<td>
-
-<pre class="no-outline" id="editor1" contenteditable="true" style="font-size: 60px;">P1</pre>
-
-</td>
-
-
-
-<td>
-
-<pre class="no-outline" id="editor2" contenteditable="true" style="font-size: 60px;">P2</pre>
-
-</td>
-
-
-
-<td>
-
-<pre name="Cricket">Cricket</pre>
-
-</td>
-
-
-
-<td>
-
-<pre class="no-outline" id="editor3" contenteditable="true" style="font-size: 60px;">P3</pre>
-
-</td>
-
-
-
-<td>
-
-<pre class="no-outline" id="editor4" contenteditable="true" style="font-size: 60px;">P4</pre>
-
-</td>
+<td><pre class="no-outline" id="editor1" contenteditable="true">P1</pre></td>
+<td><pre class="no-outline" id="editor2" contenteditable="true">P2</pre></td>
+<td><pre name="Cricket">Cricket</pre></td>
+<td><pre class="no-outline" id="editor3" contenteditable="true">P3</pre></td>
+<td><pre class="no-outline" id="editor4" contenteditable="true">P4</pre></td>
 
 
 
@@ -244,7 +250,7 @@ word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
 
 <td>
 
-<pre>20</pre>
+<pre name="Numbers">20</pre>
 
 </td>
 
@@ -294,7 +300,7 @@ word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
 
 <td>
 
-<pre>19</pre>
+<pre name="Numbers">19</pre>
 
 </td>
 
@@ -344,7 +350,7 @@ word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
 
 <td>
 
-<pre>18</pre>
+<pre name="Numbers">18</pre>
 
 </td>
 
@@ -394,7 +400,7 @@ word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
 
 <td>
 
-<pre>17</pre>
+<pre name="Numbers">17</pre>
 
 </td>
 
@@ -444,7 +450,7 @@ word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
 
 <td>
 
-<pre>16</pre>
+<pre name="Numbers">16</pre>
 
 </td>
 
@@ -494,7 +500,7 @@ word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
 
 <td>
 
-<pre>15</pre>
+<pre name="Numbers">15</pre>
 
 </td>
 
@@ -660,7 +666,7 @@ function adjustFontSize(element) {
 
     let currentFontSize = parseFloat(window.getComputedStyle(element).fontSize);
 
-    const maxFontSize = 60; // Set a maximum font size
+    const maxFontSize = 120; // Set a maximum font size
 
 
 
@@ -797,6 +803,8 @@ editor4.addEventListener('input', function() {
 // Initial adjustment on page load
 
 adjustFontSize(editor4);
+
+
 
 
 
