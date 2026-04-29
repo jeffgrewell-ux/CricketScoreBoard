@@ -21,21 +21,30 @@ pre {
 
 pre[name=Cricket]
 {
+    width: 11dvw; 
+	height: 11dvw;
+	aspect-ratio: 1 / 1;
 	display: inline-block;
 	font-weight: bold;
-	font-size: 1.5cqh;
+	font-size: 1.3cqw;
 }
 
 pre[name=Bull]
 {
+    width: 11dvw; 
+	height: 11dvw;
+	aspect-ratio: 1 / 1;
 	font-weight: bold;
-	font-size: 5cqh;
+	font-size: 4cqw;
 }
 
 pre[name=Numbers]
 {
+    width: 11dvw; 
+	height: 11dvw;
+	aspect-ratio: 1 / 1;
 	font-weight: bold;
-	font-size: 5cqh;
+	font-size: 4cqw;
 }
 
 td {
@@ -66,8 +75,8 @@ td pre {
 }
 
 img {
-    width: 10dvh; 
-	height: 10dvh; 
+    width: 10dvw; 
+	height: 10dvw; 
 	object-fit: fill;
 	cursor: pointer
 }
@@ -128,13 +137,13 @@ img {
 document.addEventListener("DOMContentLoaded", function() {
 let td = document.querySelector('td'); // Correct
 const table = document.getElementById('dynamicTable');
-let currentWidth = parseFloat(td.style.width) || 12; // Default to 100 if empty
-let currentHeight = parseFloat(td.style.height) || 12; // Default to 100 if empty
+let currentWidth = parseFloat(td.style.width) || 11; // Default to 100 if empty
+let currentHeight = parseFloat(td.style.height) || 11; // Default to 100 if empty
 
 	if (table.offsetWidth > window.innerWidth || table.offsetHeight > window.innerHeight) {
 		do {
-		td.style.width = (currentWidth - 1) + "dvh";
-		td.style.height = (currentHeight - 1) + "dvh";
+		td.style.width = (currentWidth - 1) + "dvw";
+		td.style.height = (currentHeight - 1) + "dvw";
 		} while (table.offsetWidth > window.innerWidth || table.offsetHeight > window.innerHeight);
 	};
 	});
