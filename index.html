@@ -20,10 +20,10 @@ pre[name=Cricket] {
 	aspect-ratio: 1 / 1;
     margin: 0;
     padding: 0;
-	font-size: 1.4cqi;
 	max-width: 100%; /* Ensures it doesn't exceed container */
 	max-height: 100%; /* Ensures it doesn't exceed container */
 	display: inline;
+	background: lightblue;
 }
 
 pre[name=Bull] {
@@ -31,7 +31,6 @@ pre[name=Bull] {
 	font-weight: bold;
     margin: 0;
     padding: 0;
-	font-size: 4cqi;
 	max-width: 100%; /* Ensures it doesn't exceed container */
 	max-height: 100%; /* Ensures it doesn't exceed container */
 	display: inline;
@@ -42,7 +41,6 @@ pre[name=Numbers] {
 	font-weight: bold;
     margin: 0;
     padding: 0;
-	font-size: 4cqi;
 	max-width: 100%; /* Ensures it doesn't exceed container */
 	max-height: 100%; /* Ensures it doesn't exceed container */
 	display: inline;
@@ -133,18 +131,18 @@ img {
 <script>
 window.addEventListener("resize", () => {
 adjustCellSize();
-console.log(`New size: ${window.innerWidth}x${window.innerHeight}`);
+//console.log(`New size: ${window.innerWidth}x${window.innerHeight}`);
 adjustFontSize(editor1);
 adjustFontSize(editor2);
 adjustFontSize(editor3);
 adjustFontSize(editor4);
-
+adjustCenterFontSize();
 });
 
 </script>
 
 
-<body onload="adjustCellSize();adjustFontSize(editor1);adjustFontSize(editor2);adjustFontSize(editor3);adjustFontSize(editor4);">
+<body onload="adjustCellSize();adjustFontSize(editor1);adjustFontSize(editor2);adjustFontSize(editor3);adjustFontSize(editor4);adjustCenterFontSize();">
 
 <table id="dynamicTable" align="center">
 
@@ -152,7 +150,7 @@ adjustFontSize(editor4);
 
 <td><pre class="no-outline" id="editor1" contenteditable="true">P1</pre></td>
 <td><pre class="no-outline" id="editor2" contenteditable="true">P2</pre></td>
-<td><pre id="Cricket" name="Cricket">Cricket</pre></td>
+<td id="CricketParent"><pre id="Cricket" name="Cricket">Cricket</pre></td>
 <td><pre class="no-outline" id="editor3" contenteditable="true">P3</pre></td>
 <td><pre class="no-outline" id="editor4" contenteditable="true">P4</pre></td>
 
@@ -176,7 +174,7 @@ adjustFontSize(editor4);
 
 
 
-<td>
+<td id="s20Parent">
 
 <pre id="s20" name="Numbers">20</pre>
 
@@ -226,7 +224,7 @@ adjustFontSize(editor4);
 
 
 
-<td>
+<td id="s19Parent">
 
 <pre id="s19" name="Numbers">19</pre>
 
@@ -276,7 +274,7 @@ adjustFontSize(editor4);
 
 
 
-<td>
+<td id="s18Parent">
 
 <pre id="s18" name="Numbers">18</pre>
 
@@ -326,7 +324,7 @@ adjustFontSize(editor4);
 
 
 
-<td>
+<td id="s17Parent">
 
 <pre id="s17" name="Numbers">17</pre>
 
@@ -376,7 +374,7 @@ adjustFontSize(editor4);
 
 
 
-<td>
+<td id="s16Parent">
 
 <pre id="s16" name="Numbers">16</pre>
 
@@ -426,7 +424,7 @@ adjustFontSize(editor4);
 
 
 
-<td>
+<td id="s15Parent">
 
 <pre id="s15" name="Numbers">15</pre>
 
@@ -476,7 +474,7 @@ adjustFontSize(editor4);
 
 
 
-<td>
+<td id="BullParent">
 
 <pre id="Bull" name="Bull">B</pre>
 
@@ -583,68 +581,6 @@ adjustFontSize(editor4);
 </script>
 
 
-<script>
-
-// Function to check and adjust font size
-
-function adjustCricketFontSize(element) {
-    var CricketcontainerWidth = element.offsetWidth;
-
-    var CricketcontentWidth = element.scrollWidth; // Actual width of content
-
-    var CricketcurrentFontSize = parseFloat(window.getComputedStyle(element).fontSize);
-
-    const CricketmaxFontSize = 20; // Set a maximum font size
-	element.style.fontSize = CricketmaxFontSize + 'px';
-	
-do {
-    var CricketcontainerWidth = element.offsetWidth;
-
-    var CricketcontentWidth = element.scrollWidth; // Actual width of content
-
-    var CricketcurrentFontSize = parseFloat(window.getComputedStyle(element).fontSize);
-
-    const CricketmaxFontSize = 20; // Set a maximum font size
-
-
-
-    // If content overflows, calculate a new smaller font size
-
-    if (CricketcontentWidth > CricketcontainerWidth) {
-
-        // Simple scaling calculation (adjust multiplier as needed)
-
-        // This is a basic example; more complex calculations may be needed for precise fitting.
-
-        var CricketnewSize = (CricketcontainerWidth / CricketcontentWidth) * CricketcurrentFontSize * 0.99; 
-
-        
-
-        // Cap the font size at the maximum allowed
-
-        if (CricketnewSize > CricketmaxFontSize) {
-
-            CricketnewSize = CricketmaxFontSize;
-
-        }
-
-
-
-        element.style.fontSize = CricketnewSize + 'px';
-
-    }
-
-var CricketcomputedSize = window.getComputedStyle(element).fontSize;
-//console.log(containerWidth);
-//console.log(contentWidth);
-//console.log(element);
-//console.log(newSize);
-//console.log(`Actual font-size: ${computedSize}`); 
-// Output: "16px" (always returns pixels)
-} while (CricketcontentWidth > CricketcontainerWidth);
-}
-
-</script>
 
 <script>
 
@@ -818,14 +754,14 @@ adjustFontSize(editor4);
 
 <script>
 function adjustCellSize() {
-console.log('adjustCellSize');
+//console.log('adjustCellSize');
 
 const allTds = document.querySelectorAll('td');
 const allImages = document.querySelectorAll('img');
 allTds.forEach(td => {
     // Get computed style object
     const tdstyle = window.getComputedStyle(td);
-    console.log(`Width: ${tdstyle.width}, Height: ${tdstyle.height}`);
+    //console.log(`Width: ${tdstyle.width}, Height: ${tdstyle.height}`);
 });
 
 
@@ -835,7 +771,7 @@ allTds.forEach(cell => {
 });
 
 const editors = document.querySelectorAll('[id^="editor"]');
-console.log(editors);
+//console.log(editors);
 
 editors.forEach(textarea => {
 	textarea.style.setProperty("width", "100%", "important");
@@ -846,13 +782,13 @@ editors.forEach(textarea => {
 allTds.forEach(td => {
     // Get computed style object
     const tdstyle = window.getComputedStyle(td);
-    console.log(`Width: ${tdstyle.width}, Height: ${tdstyle.height}`);
+    //console.log(`Width: ${tdstyle.width}, Height: ${tdstyle.height}`);
 });
 
 const table = document.getElementById('dynamicTable');
 let newsize = 599
-console.log(`table.offsetWidth: ${table.offsetWidth}, window.innerWidth: ${window.innerWidth}`);
-console.log(`table.offsetHeight: ${table.offsetHeight}, window.innerHeight: ${window.innerHeight}`);
+//console.log(`table.offsetWidth: ${table.offsetWidth}, window.innerWidth: ${window.innerWidth}`);
+//console.log(`table.offsetHeight: ${table.offsetHeight}, window.innerHeight: ${window.innerHeight}`);
 
 
 
@@ -862,16 +798,16 @@ while (table.offsetWidth > window.innerWidth || table.offsetHeight > window.inne
 
 
 	i += 10
-  console.log(`i: ${i}`); // Outputs 0, 10, 20, 30...
+  //console.log(`i: ${i}`); // Outputs 0, 10, 20, 30...
 
     				allTds.forEach(cell => {
 						let cellstyle = window.getComputedStyle(cell);
-						console.log(`Width: ${cellstyle.width}, Height: ${cellstyle.height}`);
+						//console.log(`Width: ${cellstyle.width}, Height: ${cellstyle.height}`);
 						cell.style.setProperty("width", (600 - i)+"px", "important");
 						cell.style.setProperty("height", (600 - i)+"px", "important");						
 
-						console.log(`table.offsetWidth: ${table.offsetWidth}, window.innerWidth: ${window.innerWidth}`);
-						console.log(`table.offsetHeight: ${table.offsetHeight}, window.innerHeight: ${window.innerHeight}`);
+						//console.log(`table.offsetWidth: ${table.offsetWidth}, window.innerWidth: ${window.innerWidth}`);
+						//console.log(`table.offsetHeight: ${table.offsetHeight}, window.innerHeight: ${window.innerHeight}`);
 					});
     
     // Safety break to prevent infinite loops
@@ -881,4 +817,34 @@ while (table.offsetWidth > window.innerWidth || table.offsetHeight > window.inne
 
 	}
 	
+</script>
+
+<script>
+
+function adjustCenterFontSize() {
+const CricketParent = document.getElementById("CricketParent");
+const BullParent = document.getElementById("BullParent");
+
+//console.log(`CricketParent.style.width: ${CricketParent.style.width}`)
+//console.log(`CricketParent.style.height: ${CricketParent.style.height}`)
+document.getElementById("Cricket").style.fontSize = parseFloat(CricketParent.style.width) / 5 + 'px';
+//console.log(`Cricket.style.fontSize: ${Cricket.style.fontSize}`)
+
+
+//console.log(`BullParent.style.width: ${BullParent.style.width}`)
+//console.log(`BullParent.style.height: ${BullParent.style.height}`)
+document.getElementById("Bull").style.fontSize = parseFloat(BullParent.style.width) / 1.5 + 'px';
+//console.log(`Bull.style.fontSize: ${Bull.style.fontSize}`)
+
+//console.log(`s20Parent.style.width: ${s20Parent.style.width}`)
+//console.log(`s20Parent.style.height: ${s20Parent.style.height}`)
+document.getElementById("s20").style.fontSize = parseFloat(s20Parent.style.width) / 1.5 + 'px';
+//console.log(`s20.style.fontSize: ${s20.style.fontSize}`)
+
+document.getElementById("s19").style.fontSize = parseFloat(s19Parent.style.width) / 1.5 + 'px';
+document.getElementById("s18").style.fontSize = parseFloat(s18Parent.style.width) / 1.5 + 'px';
+document.getElementById("s17").style.fontSize = parseFloat(s17Parent.style.width) / 1.5 + 'px';
+document.getElementById("s16").style.fontSize = parseFloat(s16Parent.style.width) / 1.5 + 'px';
+document.getElementById("s15").style.fontSize = parseFloat(s15Parent.style.width) / 1.5 + 'px';
+}
 </script>
