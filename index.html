@@ -147,11 +147,11 @@ adjustCenterFontSize();
 
 <tbody><tr>
 
-<td><pre class="no-outline" id="editor1" contenteditable="true">P1</pre></td>
-<td><pre class="no-outline" id="editor2" contenteditable="true">P2</pre></td>
+<td id="editor1Parent"><pre class="no-outline" id="editor1" contenteditable="true">P1</pre></td>
+<td id="editor2Parent"><pre class="no-outline" id="editor2" contenteditable="true">P2</pre></td>
 <td id="CricketParent"><pre id="Cricket" name="Cricket">Cricket</pre></td>
-<td><pre class="no-outline" id="editor3" contenteditable="true">P3</pre></td>
-<td><pre class="no-outline" id="editor4" contenteditable="true">P4</pre></td>
+<td id="editor3Parent"><pre class="no-outline" id="editor3" contenteditable="true">P3</pre></td>
+<td id="editor4Parent"><pre class="no-outline" id="editor4" contenteditable="true">P4</pre></td>
 
 </tr>
 
@@ -586,25 +586,25 @@ adjustCenterFontSize();
 // Function to check and adjust font size when two characters
 
 function adjustFontSize(element) {
-    var containerWidth = element.offsetWidth;
+element.style.fontSize = parseFloat(editor1Parent.style.width) / 1.5 + 'px';
 
-    var contentWidth = element.scrollWidth; // Actual width of content
 
-    var currentFontSize = parseFloat(window.getComputedStyle(element).fontSize);
-
-    const maxFontSize = 50; // Set a maximum font size
+    let maxFontSize = parseFloat(editor1Parent.style.width) / 1.5; // Set a maximum font size
+	console.log(`maxFontSize: ${maxFontSize}`)
 	element.style.fontSize = maxFontSize + 'px';
+
 	
 do {
+
     var containerWidth = element.offsetWidth;
 
     var contentWidth = element.scrollWidth; // Actual width of content
 
     var currentFontSize = parseFloat(window.getComputedStyle(element).fontSize);
+console.log(`currentFontSize: ${currentFontSize}`)
+    //const maxFontSize = parseFloat(editor1Parent.style.width) / 1.5; // Set a maximum font size
 
-    const maxFontSize = 50; // Set a maximum font size
-
-
+console.log(`maxFontSize: ${maxFontSize}`)
 
     // If content overflows, calculate a new smaller font size
 
@@ -664,7 +664,7 @@ editor1.addEventListener('input', function() {
 
 // Initial adjustment on page load
 
-adjustFontSize(editor1);
+//adjustFontSize(editor1);
 
 
 
@@ -688,7 +688,7 @@ editor2.addEventListener('input', function() {
 
 // Initial adjustment on page load
 
-adjustFontSize(editor2);
+//adjustFontSize(editor2);
 
 
 
@@ -714,7 +714,7 @@ editor3.addEventListener('input', function() {
 
 // Initial adjustment on page load
 
-adjustFontSize(editor3);
+//adjustFontSize(editor3);
 
 
 
@@ -738,7 +738,7 @@ editor4.addEventListener('input', function() {
 
 // Initial adjustment on page load
 
-adjustFontSize(editor4);
+//adjustFontSize(editor4);
 
 
 
@@ -845,5 +845,7 @@ document.getElementById("s18").style.fontSize = parseFloat(s18Parent.style.width
 document.getElementById("s17").style.fontSize = parseFloat(s17Parent.style.width) / 1.5 + 'px';
 document.getElementById("s16").style.fontSize = parseFloat(s16Parent.style.width) / 1.5 + 'px';
 document.getElementById("s15").style.fontSize = parseFloat(s15Parent.style.width) / 1.5 + 'px';
+//document.getElementById("editor1").style.fontSize = parseFloat(editor1Parent.style.width) / 1.5 + 'px';
+
 }
 </script>
