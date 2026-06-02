@@ -685,6 +685,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (colorInput1) {
         // iOS Safari captures 'input' best through explicit event listeners
         colorInput1.addEventListener("input", (event) => {
+		alert("colorInput1.addEventListener");
             changeColumnColor(event.target.value, 0);
         });
     }
