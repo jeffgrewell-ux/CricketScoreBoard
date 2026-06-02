@@ -680,22 +680,22 @@ document.querySelectorAll(".PickAColorimage").forEach(img => {
 </script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-    const colorInput = document.getElementById("color-choice1");
+    const colorInput1 = document.getElementById("color-choice1");
     
-    if (colorInput) {
+    if (colorInput1) {
         // iOS Safari captures 'input' best through explicit event listeners
-        colorInput.addEventListener("input", (event) => {
+        colorInput1.addEventListener("input", (event) => {
             changeColumnColor(event.target.value, 0);
         });
     }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    const colorInput = document.getElementById("color-choice2");
+    const colorInput2 = document.getElementById("color-choice2");
     
-    if (colorInput) {
+    if (colorInput2) {
         // iOS Safari captures 'input' best through explicit event listeners
-        colorInput.addEventListener("input", (event) => {
+        colorInput2.addEventListener("input", (event) => {
             changeColumnColor(event.target.value, 1);
         });
     }
@@ -703,22 +703,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    const colorInput = document.getElementById("color-choice3");
+    const colorInput3 = document.getElementById("color-choice3");
     
-    if (colorInput) {
+    if (colorInput3) {
         // iOS Safari captures 'input' best through explicit event listeners
-        colorInput.addEventListener("input", (event) => {
+        colorInput3.addEventListener("input", (event) => {
             changeColumnColor(event.target.value, 3);
         });
     }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    const colorInput = document.getElementById("color-choice4");
+    const colorInput4 = document.getElementById("color-choice4");
     
-    if (colorInput) {
+    if (colorInput4) {
         // iOS Safari captures 'input' best through explicit event listeners
-        colorInput.addEventListener("input", (event) => {
+        colorInput4.addEventListener("input", (event) => {
             changeColumnColor(event.target.value, 4);
         });
     }
