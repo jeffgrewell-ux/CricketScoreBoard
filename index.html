@@ -679,17 +679,19 @@ document.querySelectorAll(".PickAColorimage").forEach(img => {
 
 </script>
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    const colorInput1 = document.getElementById("color-choice1");
-    
-    if (colorInput1) {
-        // iOS Safari captures 'input' best through explicit event listeners
-        colorInput1.addEventListener("input", (event) => {
-		alert("colorInput1.addEventListener");
-            changeColumnColor(event.target.value, 0);
-        });
-    }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const colorInput1 = document.getElementById('color-choice1');
+  alert("colorInput1.addEventListener");
+  if (colorInput1) {
+    // iOS Safari captures color changes best on the 'input' event
+    colorInput1.addEventListener('input', (event) => {
+      changeColumnColor(event.target.value, 0);
+    });
+  }
 });
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const colorInput2 = document.getElementById("color-choice2");
